@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: test-frontend
-          image: pavloskomple/test-frontend:v1.0
+          image: pavloskomple/test-frontend:v2.0
           ports:
             - containerPort: 3000
 ---
