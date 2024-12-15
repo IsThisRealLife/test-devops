@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-backend
+  labels:
+    app: test-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-backend
+  template:
+    metadata:
+      labels:
+        app: test-backend
+    spec:
+      containers:
+        - name: test-backend
+          image: pavloskomple/test-backend:v1.0
+          ports:
+            - containerPort: 9004
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-backend-service
+spec:
+  selector:
+    app: test-backend
+  ports:
+    - port: 9004
+      targetPort: 9004
+  type: ClusterIP

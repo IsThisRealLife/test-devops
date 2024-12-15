@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test-backend
+  namespace: argocd  # Adjust if using a different ArgoCD namespace
+spec:
+  destination:
+    server: https://kubernetes.default.svc  # Kubernetes server URL
+    namespace: default  # Kubernetes namespace where the backend will be deployed
+  source:
+    repoURL: 'https://github.com/IsThisRealLife/test-devops'  # Replace with your Git repository URL
+    targetRevision: main  # Branch to deploy from
+    path: 'test-backend/k8s'  # Path to the test-backend folder within the Git repo
+  syncPolicy:
+    automated:
+      prune: true  # Automatically remove resources no longer in the Git repo
+      selfHeal: true  # Automatically heal out-of-sync resources
