@@ -11,7 +11,6 @@ spec:
     repoURL: 'https://github.com/IsThisRealLife/test-devops'  # Replace with your Git repository URL
     targetRevision: main  # Branch to deploy from
     path: 'test-backend/k8s'  # Path to the test-backend folder within the Git repo
-  project: test-project
   syncPolicy:
     automated:
       prune: true  # Automatically remove resources no longer in the Git repo
